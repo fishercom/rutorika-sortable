@@ -30,7 +30,8 @@ trait SortableTrait
                 /* @var Model $model */
                 $sortableField = static::getSortableField();
                 $query = static::applySortableGroup(static::on(), $model);
-                $model->setAttribute($sortableField, $query->max($sortableField) + 1);
+                $new_pos=$query->max($sortableField) + 1;
+                $model->setAttribute($sortableField, "$new_pos");
             }
         );
     }
